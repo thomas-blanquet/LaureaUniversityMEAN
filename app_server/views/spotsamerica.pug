@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Top 10 best surf spots in America
+  ul
+    each spot in spots
+      li= spot.name + ', ' + spot.country
