@@ -5,14 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var about = require('./routes/about');
-var thomas = require('./routes/thomas');
+var index = require('./app_server/routes/index');
+var users = require('./app_server/routes/users');
+var about = require('./app_server/routes/about');
+var thomas = require('./app_server/routes/thomas');
 
 var app = express();
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
