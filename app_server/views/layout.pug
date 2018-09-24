@@ -7,13 +7,17 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
   body
     nav(class="navbar navbar-light", style="background-color: #e3f2fd;")
-      div(class=container)
-        a(href='/') Home
-        br
-        a(href='/spotseurope') Europe Surf Spots List
-        br
-        a(href='/spotsamerica') America Surf Spots List
-        br
+      a(class="navbar-brand" href="/") Best Surf Spots In The World
+      button(class="navbar-toggler", type="button", data-toggle="collapse", data-target="#navbarNavDropdown", aria-controls="navbarNavDropdown", aria-expanded="false", aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+    div(class="collapse navbar-collapse", id="navbarNavDropdown")
+      ul(class="navbar-nav")
+        li(class="nav-item active")
+          a(class="nav-link", href='/') Home
+        li(class="nav-item")
+          a(href='/spotseurope') Europe Surf Spots List
+        li(class="nav-item")
+          a(href='/spotsamerica') America Surf Spots List
 
     block content
 
