@@ -2,6 +2,6 @@ extends layout
 
 block content
   h1 Top 10 best surf spots in America
-  ul
+  div(class="list-group")
     each spot in spots
-      li= spot.name + ', ' + spot.country
+      a(href="#", class="list-group-item list-group-item-action")= spot.name + ', ' + spot.country
