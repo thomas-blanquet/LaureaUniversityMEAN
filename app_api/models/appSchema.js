@@ -22,5 +22,5 @@ const sportSchema = new mongoose.Schema({
   },
 });
 
-mongoose.model('surfspot', surfSpotSchema);
-mongoose.model('sport', sportSchema);
+mongoose.model('surfspot', surfSpotSchema, 'surfspot');
+mongoose.model('sport', sportSchema,'sport');

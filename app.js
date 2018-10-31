@@ -5,12 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-require('./app_server/models/db');
+require('./app_api/models/db');
 
 var index = require('./app_server/routes/index');
 var users = require('./app_server/routes/users');
 var about = require('./app_server/routes/about');
 var thomas = require('./app_server/routes/thomas');
+const apiRoutes = require('./app_api/routes/indexApi');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/about', about);
 app.use('/thomas', thomas);
+app.use('/api', apiRoutes);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
