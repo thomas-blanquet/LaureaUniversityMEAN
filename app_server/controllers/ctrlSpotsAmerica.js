@@ -13,6 +13,7 @@ const spots = function(req, res) {
   request(
     requestOptions,
     function (err, response, body) {
+      console.log(body);
       if (err) {
         res.render('error', {message: err.message});
       } else if (response.statusCode !== 200) {
