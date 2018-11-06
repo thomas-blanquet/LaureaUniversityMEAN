@@ -1,18 +1,37 @@
+const request = require('request');
+const apiURL = require('./apiURLs.js')
+
 const spots = function(req, res) {
-  res.render('spotseurope', {
-    spots : [
-      {name:'Peniche', country:'Portugal'},
-      {name:'San Sebastian', country:'Spain'},
-      {name:'Mundaka', country:'Spain'},
-      {name:'The Bubble', country:'Canary Islands, Spain'},
-      {name:'Biarritz', country:'France'},
-      {name:'Hossegor', country:'France'},
-      {name:'Lacanau', country:'France'},
-      {name:'Sennen Cove', country:'Cornwall, England'},
-      {name:'Watergate Bay', country:'Cornwall, England'},
-      {name:'Bundoran beach', country:'Ireland'},
-    ]
-  });
+  const path = '/api/surfspot';
+  const requestOptions = {
+    url: apiURL.server + path,
+    method: 'GET',
+    json : {},
+    qs : {}
+  };
+
+  request(
+    requestOptions,
+    function (err, response, body) {
+      if (err) {
+        res.render('error', {message: err.message});
+      } else if (response.statusCode !== 200) {
+        res.render('error', {message: 'Error accessing API: ' + response.statusMessage + ' (' + response.statusCode + ')'});
+      } else if (!(body instanceof Array)) {
+        res.render('error', {message: 'Unexpected response data'});
+      } else if (!body.lenght) {
+        res.render('error', {message: 'No documents in collection'});
+      } else {
+        var spotsList = [];
+        body.forEach(function (element) {
+          if (element.region === 'Europe') {
+            spotsList.push(element);
+          }
+        })
+        res.render('spotseurope', {spots : spotsList});
+      }
+    }
+  );
 }
 
 module.exports = {
